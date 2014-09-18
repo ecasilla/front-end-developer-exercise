@@ -15,8 +15,11 @@ html{
 #dave{
   background-image: url("../images/header.jpg");
   background-size: cover;
+  background: no-repeat center center fixed\0/; /* IE8 HACK */
+  background-position: 0px 0px,center;
   height: 320px;
   min-width: 1024px;
+  -ms-behavior: url(/backgroundsize.min.htc);
 }
 
 header{
@@ -25,23 +28,26 @@ header{
 
 header p{
   font-family: 'Open Sans', sans-serif;
+  font-weight:300;
   font-size:32px;
   color: #fff;
-  margin-left: 57%;
+  margin-left: 50%;
   padding-top: 40px;
 }
 header h3{
  font-family: 'Open Sans', sans-serif;
  font-size:50px;
+ font-weight: 700;
  color: #fff;
- line-height:48px;
- margin-left: 65%;
+ line-height: 54px;
+ margin-left: 57%;
  margin-top:15px;
 }
 
 .BabyStepList{
   list-style:none;
-  font-size:18px
+  font-size:18px;
+  font-weight:400;
   font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#9ba0a4;
@@ -54,10 +60,12 @@ header h3{
   padding-right:24px;
 }
 .active{
-  font-size:18px
+  font-size:18px;
+  font-weight:600;
   font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#36abe1;
+  background-color: #fff;
   font-style:semi-bold;
 }
 
@@ -151,7 +159,8 @@ a:active{
   padding: 0 70px;
 }
 .contentHeader{
-  font-size:30px
+  font-size:30px;
+  font-weight:600;
   font-family: 'Source Sans Pro', sans-serif;
   color:#36abe1;
   line-height:20px;
@@ -159,11 +168,11 @@ a:active{
 }
 
 .contentSubtitle{
-  font-size:18px
+  font-size:18px;
+  font-weight:300;
   font-family: 'Source Sans Pro', sans-serif;
   color:#5c6366;
-  line-height:20px;
-/*   margin-top: -17px; */
+  line-height:31px;
 }
 
 .friendsStatus{

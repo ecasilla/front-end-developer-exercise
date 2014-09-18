@@ -1,30 +1,51 @@
 'use strict';
 
-angular.module('babysteps',[
-  //  'babysteps.step1',
-    'ui.router'
+var app = angular.module('babysteps',[
+    'ui.router',
+    "ngAnimate"
 ])
 
-.config(["$stateProvider",'$urlRouterProvider', function ($stateProvider,$urlRouterProvider) {
+app.run([ '$rootScope', '$state', '$stateParams', function ($rootScope,$state,$stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    $rootScope.$on('$stateChangeError',function (event,toState,toParams,fromState,fromParams,error) {
+      console.log("Huston we have a " + console.error(error));
+    })
+    }
+  ]
+)
+
+app.config(["$stateProvider",'$urlRouterProvider', function ($stateProvider) {
 
   $stateProvider
 
-    .state('app', {
-        url: '/',
-        views:{
-          'header':{
-            templateUrl: 'assets/templates/common/header.html'
-          },
-          'sidebar':{
-            templateUrl:'assets/templates/common/sidebar.html'
-          },
-          'content':{
-            templateUrl:'assets/templates/common/content.html'
-          }
-        }
+  .state('app', {
+    abstract:true,
+    url: '/',
+    views:{
+      'header':{
+        templateUrl: 'assets/templates/common/header.html'
+      },
+      'sidebar':{
+        templateUrl:'assets/templates/common/sidebar.html'
+      },
+      'content':{
+        templateUrl:'assets/templates/common/content.html'
+      }
+    },
+    controller: 'MainCtrl',
+  })
 
-      //  $urlRouterProvider.otherwise('/app/#/');
-    });
+  .state('app.step',{
+    url:'{stepId:[0-9]{1,4}}',
+    views:{
+      'content@':{
+        templateUrl: function ($stateParams){
+          return 'assets/templates/steps/step' + $stateParams.stepId + '.html';
+        }
+      }
+    }
+  })
 }])
 
 
@@ -36,7 +57,7 @@ angular.module('babysteps',[
  * Controller of babysteps
  */
 
-.controller('MainCtrl', ['$scope', 'friends', MainCtrl])
+app.controller('MainCtrl', ['$scope', 'friends', MainCtrl])
 
 
 
@@ -47,11 +68,24 @@ angular.module('babysteps',[
  * # friends
  * factory in babysteps.
  */
+app.filter('friends', function () {
+  return function (friends,babystep) {
+    return
+    filtered = [];
 
+     for (var i = 0; i < friends.length; i++) {
+       var friend = friends[i];
+       if (friend.babyStep == babystep) {
+         filtered.push(friend);
+       }
+       return filtered;
+     }
+  };
+});
 
-.factory('friends',function friends(){
+app.factory('friends',function(){
 
-  friends = [
+   var friends = [
       { "firstName" : "Paul", "lastName" : "Taylor", "babyStep": 2 },
       { "firstName" : "Sharon", "lastName" : "Thomas", "babyStep": 3 },
       { "firstName" : "Thomas", "lastName" : "Harris", "babyStep": 3 },
@@ -80,21 +114,25 @@ angular.module('babysteps',[
 })
 
 function MainCtrl($scope,friends){
-  $scope.babysteps = [1,2,3,4,5,6,7];
+  $scope.friends = friends;
+  $scope.Limit = 2;
+  $scope.babysteps = [
+  {id:1},
+  {id:2},
+  {id:3},
+  {id:4},
+  {id:5},
+  {id:6},
+  {id:7}
+  ];
+
+  $scope.selectStep = function(selectedStep) {
+      angular.forEach($scope.babysteps,function(step) {
+            step.selected = false;
+            if (selectedStep === step) {
+                selectedStep.selected = true;
+            }
+        });
+    };
+
 }
-
-
-angular.module('babysteps.step1', ['ui.router'])
-
-  .config(["stateProvider",function ($stateProvider) {
-    $stateProvider
-
-    .$state('babysteps.step1',{
-      url: 'step1',
-      views:{
-        'content@': {
-          templateUrl: 'assets/templates/steps/step1.html'
-        }
-      }
-    })
-  }])

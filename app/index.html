@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="babysteps">
+<html ng-app="babysteps" xmlns:ng="http://angularjs.org" id="babysteps">
   <head>
     <title>Babysteps</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -10,15 +10,21 @@
   <body >
 
     <div ui-view="header"></div>
+    <img class="shadow_left" src="assets/images/shadow_left.jpg" alt="image shadow" />
+    <img class="shadow_right" src="assets/images/shadow_right.jpg" alt="image shadow" />
 
     <section class="container" ng-controller="MainCtrl">
 
       <div class="sidebar" ui-view="sidebar"></div>
 
-      <div class="content slide" ui-view="content"></div>
+      <div class="content slide well" ng-animate="'view'" ui-view="content"></div>
     </section>
+
+    <img src="assets/images/shadow_bottom.jpg" alt="image shadow"/>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/vendor/angular-ui-router.min.js"  type="text/javascript" charset="utf-8"></script>
+    <script src="assets/vendor/Modernizr.js"  type="text/javascript" charset="utf-8"></script>
     <script src="assets/vendor/ng-animate.min.js"  type="text/javascript" charset="utf-8"></script>
     <script src="assets/javascripts/main.js"  type="text/javascript" charset="utf-8"></script>
   </body>

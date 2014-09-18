@@ -6,7 +6,8 @@
       ng-href="#{{babystep.id}}"
       ui-serf="app.step({ stepId: babystep })">
     <li
-      ng-class="{active: babystep.selected}"
+      ng-class="{'active': babystep.selected,'navTransition':babystep.selected}"
+      ng-animate="'view'"
       ng-click="selectStep(babystep.id)"
       class="babystepitem">Baby Step {{babystep.id}}
   <img

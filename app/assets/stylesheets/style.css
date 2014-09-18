@@ -1,7 +1,11 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
 body{
   background-color:#bbbfc2;
   margin: -32px 10% 10% 10%;
   height: 100%;
+
 }
 
 html{
@@ -53,9 +57,23 @@ header h3{
   font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#36abe1;
-  background-color: #fff;
   font-style:semi-bold;
 }
+
+.navTransition{
+  background-color:#fff;
+  animation: moveFromBottom 900ms linear;
+}
+
+@keyframes moveFromBottom {
+    from {
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(30%);
+    }
+}
+
 
 .icon{
   padding-left: 15px;
@@ -66,7 +84,20 @@ header h3{
 .container{
   background-color: #fff;
   height: 100%;
-  margin-bottom:90px;
+  margin-bottom:1px;
+  position: relative;
+  margin-left: 15px;
+}
+
+.shadow_left{
+  position: fixed;
+  top: 0;
+}
+
+.shadow_right{
+  position: fixed;
+  top: 0;
+  margin-left: 80%;
 }
 
 hr {
@@ -74,6 +105,7 @@ hr {
     height: 1px;
     margin: 0;
     background: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );
     background-image: -webkit-linear-gradient(left, #fff, #fff, #fff);
     background-image:    -moz-linear-gradient(left, #fff, #fff, #fff);
     background-image:     -ms-linear-gradient(left, #fff, #fff, #fff);
@@ -97,6 +129,11 @@ a:active{
 .sidebar{
   position: absolute;
   background-color:#E2E3E4;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebeced', endColorstr='#d1d5d6', GradientType=0 );
+  background-image: -webkit-linear-gradient(left, #ebeced, #d1d5d6);
+  background-image:    -moz-linear-gradient(left, #ebeced, #d1d5d6);
+  background-image:     -ms-linear-gradient(left, #ebeced, #d1d5d6);
+  background-image:      -o-linear-gradient(left, #ebeced, #d1d5d6);
   margin-top: 35px;
   height: 95.6%;
   width: 320px;
@@ -106,7 +143,7 @@ a:active{
 .content{
   background-color:#fff;
   position: relative;
-  width: 60%;
+  width: 58%;
   float: right;
   margin-top: 1.8%;
   padding: 0 70px;
@@ -152,31 +189,33 @@ a:active{
   padding-top:18px;
 }
 
-[ui-view].ng-enter, [ui-view].ng-leave {
+.well[ui-view]{
+ height: 65px;
+}
+
+.view-enter, .view-leave {
   position: absolute;
-  left: 0;
-  right: 0;
   -webkit-transition:all .5s ease-in-out;
 	-moz-transition:all .5s ease-in-out;
 	-o-transition:all .5s ease-in-out;
 	transition:all .5s ease-in-out;
 }
 
-[ui-view].ng-enter {
+.view-enter {
   opacity: 0;
   -webkit-transform:scale3d(0.5, 0.5, 0.5);
   -moz-transform:scale3d(0.5, 0.5, 0.5);
   transform:scale3d(0.5, 0.5, 0.5);
 }
 
-[ui-view].ng-enter-active {
+.view-enter-active {
   opacity: 1;
   -webkit-transform:scale3d(1, 1, 1);
   -moz-transform:scale3d(1, 1, 1);
   transform:scale3d(1, 1, 1);
 }
 
-[ui-view].ng-leave {
+.view-leave {
   opacity: 1;
   /*padding-left: 0px;*/
   -webkit-transform:translate3d(0, 0, 0);
@@ -184,10 +223,28 @@ a:active{
   transform:translate3d(0, 0, 0);
 }
 
-[ui-view].ng-leave-active {
+.view-leave-active {
   opacity: 0;
   /*padding-left: 100px;*/
   -webkit-transform:translate3d(100px, 0, 0);
   -moz-transform:translate3d(100px, 0, 0);
   transform:translate3d(100px, 0, 0);
+}
+
+@media all and (max-width: 1380px) and (min-width: 1100px) {
+  .content{
+    width: 52%;
+  }
+  .sidebar{
+    width: 300px;
+  }
+}
+
+@media all and (min-width: 1024px) and(max-width:1100px){
+  .content{
+    width:48%;
+  }
+  .sidebar{
+    width: 280px;
+  }
 }

@@ -19,4 +19,9 @@ describe('Controller: MainCtrl', function () {
   it('should have a list of babysteps count on the scope', function () {
     expect(scope.babysteps.length).toBe(7);
   });
+
+  it('should tell me which step is selected',function () {
+    var selected = scope.selectedStep(1);
+    expect(scope.babysteps[0].selected).toBe(true);
+  })
 });

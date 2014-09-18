@@ -103,22 +103,23 @@ function MainCtrl($scope,friends){
   $scope.friends = friends;
   $scope.Limit = 2;
   $scope.babysteps = [
-  {id:1},
-  {id:2},
-  {id:3},
-  {id:4},
-  {id:5},
-  {id:6},
-  {id:7}
+  {id:1, selected:false},
+  {id:2, selected:false},
+  {id:3, selected:false},
+  {id:4, selected:false},
+  {id:5, selected:false},
+  {id:6, selected:false},
+  {id:7, selected:false}
   ];
 
   $scope.selectStep = function(selectedStep) {
-      angular.forEach($scope.babysteps,function(step) {
-            step.selected = false;
-            if (selectedStep === step) {
-                selectedStep.selected = true;
-            }
-        });
-    };
+    angular.forEach($scope.babysteps,function (value,key) {
+      if (value.id === selectedStep) {
+        value.selected = true;
+      }else{
+        value.selected = false;
+      }
+    });
+  }
 
 }

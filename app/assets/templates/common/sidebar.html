@@ -1,19 +1,24 @@
 <ul class="BabyStepList">
   <div
       ng-repeat="babystep in babysteps"
-      ui-serf-active="active"
-      ng-class="{active: step.selected}"
-      ng-click="selectStep(babystep)"
-      class="active">
+      >
     <a
       ng-href="#{{babystep.id}}"
       ui-serf="app.step({ stepId: babystep })">
     <li
+      ng-class="{active: babystep.selected}"
+      ng-click="selectStep(babystep.id)"
       class="babystepitem">Baby Step {{babystep.id}}
   <img
+      ng-if="babystep.selected"
       class="icon"
-      ng-src="assets/images/icons/individual/icons_small_bs{{babystep.id}}.png"
-      alt="Money"/>
+      ng-src="assets/images/icons/individual/icons_small_bs{{babystep.id}}_blue.png"
+      />
+      <img
+      ng-if="!babystep.selected"
+          class="icon"
+          ng-src="assets/images/icons/individual/icons_small_bs{{babystep.id}}.png"
+        />
       </li>
     </a>
     <hr>

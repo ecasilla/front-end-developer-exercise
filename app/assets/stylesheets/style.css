@@ -37,7 +37,7 @@ header h3{
 .BabyStepList{
   list-style:none;
   font-size:18px
-font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#9ba0a4;
   font-style:regular;
@@ -53,6 +53,7 @@ font-family: 'Source Sans Pro', sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#36abe1;
+  background-color: #fff;
   font-style:semi-bold;
 }
 

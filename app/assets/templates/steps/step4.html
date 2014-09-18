@@ -15,10 +15,13 @@ When you reach this step, you’ll have no payments—except the house—and a f
 Dave suggests investing 15% of your household income into Roth IRAs and pre-tax retirement plans. Don’t invest more than that because the extra money will help you complete the next two steps: college savings and paying off your home early.
 
   </p>
-  <div class="friendsStatus">
+<div class="friendsStatus" >
     <span>
-    <p class="friend">
-      Ernie casilla
+    <p class="friend" ng-repeat="friend in filtered = (friends | filter:{babyStep:4}) | limitTo:2">
+      {{friend.firstName}} {{friend.lastName}}<span class="maintext">,</span>
+      <p class="filteredLength">
+        and {{filtered.length}} Other Friends are on this step.
+      </p>
     </p>
     </span>
   </div>

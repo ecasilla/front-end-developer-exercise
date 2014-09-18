@@ -15,10 +15,13 @@ List your debts, excluding the house, in order. The smallest balance should be y
 The point of the debt snowball is simply this: You need some quick wins in order to stay pumped up about getting out of debt! Paying off debt is not always about math. It’s about motivation. Personal finance is 20% head knowledge and 80% behavior. When you start knocking off the easier debts, you will see results and you will stay motivated to dump your debt.
 
   </p>
-  <div class="friendsStatus">
+  <div class="friendsStatus" >
     <span>
-    <p class="friend">
-      Ernie casilla
+    <p class="friend" ng-repeat="friend in filtered = (friends | filter:{babyStep:2}) | limitTo:2">
+      {{friend.firstName}} {{friend.lastName}}<span class="maintext">,</span>
+      <p class="filteredLength">
+        and {{filtered.length}} Other Friends are on this step.
+      </p>
     </p>
     </span>
   </div>

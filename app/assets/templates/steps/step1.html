@@ -17,10 +17,13 @@
     This beginning emergency fund will keep life’s little Murphies from turning into new debt while you work off the old debt. If a real emergency happens, you can handle it with your emergency fund. No more borrowing. It’s time to break the cycle of debt!
 
   </p>
-  <div class="friendsStatus" ng-repeat="friend in friends" | friends:1>
+  <div class="friendsStatus" >
     <span>
-    <p class="friend">
-      {{friend.firstName}}  {{friend.lastName}}
+    <p class="friend" ng-repeat="friend in filtered = (friends | filter:{babyStep:1}) | limitTo:2">
+      {{friend.firstName}} {{friend.lastName}}<span class="maintext">,</span>
+      <p class="filteredLength" ng-if="filtered.length">
+        and {{filtered.length}} Other Friends are on this step.
+      </p>
     </p>
     </span>
   </div>

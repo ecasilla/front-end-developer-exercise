@@ -13,10 +13,13 @@ It’s time to build wealth and give like never before. Leave an inheritance for
 Golda Meir says, “You can’t shake hands with a clenched fist.” Vow to never hold your money so tightly that you never give any away. Hoarding money is not the way to wealth. Save for yourself, save for your family’s future, and be gracious enough to bless others. You can do all three at the same time.
 
   </p>
-  <div class="friendsStatus">
+  <div class="friendsStatus" >
     <span>
-    <p class="friend">
-      Ernie casilla
+    <p class="friend" ng-repeat="friend in filtered = (friends | filter:{babyStep:7}) | limitTo:2">
+      {{friend.firstName}} {{friend.lastName}}<span class="maintext">,</span>
+      <p class="filteredLength">
+        and {{filtered.length}} Other Friends are on this step.
+      </p>
     </p>
     </span>
   </div>

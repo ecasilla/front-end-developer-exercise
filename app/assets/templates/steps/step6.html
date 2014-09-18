@@ -15,10 +15,13 @@ Now it’s time to begin chunking all of your extra money toward the mortgage. Y
 As you attack this last debt, you will gain momentum much like you did back in the second step of the debt snowball. Remember, having absolutely no payments is totally within your reach!
 
   </p>
-  <div class="friendsStatus">
+  <div class="friendsStatus" >
     <span>
-    <p class="friend">
-      Ernie casilla
+    <p class="friend" ng-repeat="friend in filtered = (friends | filter:{babyStep:6}) | limitTo:2">
+      {{friend.firstName}} {{friend.lastName}}<span class="maintext">,</span>
+      <p class="filteredLength">
+        and {{filtered.length}} Other Friends are on this step.
+      </p>
     </p>
     </span>
   </div>

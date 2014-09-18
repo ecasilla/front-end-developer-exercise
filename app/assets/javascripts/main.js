@@ -68,20 +68,6 @@ app.controller('MainCtrl', ['$scope', 'friends', MainCtrl])
  * # friends
  * factory in babysteps.
  */
-app.filter('friends', function () {
-  return function (friends,babystep) {
-    return
-    filtered = [];
-
-     for (var i = 0; i < friends.length; i++) {
-       var friend = friends[i];
-       if (friend.babyStep == babystep) {
-         filtered.push(friend);
-       }
-       return filtered;
-     }
-  };
-});
 
 app.factory('friends',function(){
 

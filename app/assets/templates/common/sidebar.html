@@ -1,0 +1,10 @@
+<ul class="BabyStepList">
+  <div ng-repeat="babystep in babysteps">
+    <a ng-href="#/step{{babystep}}" ui-serf="app.step{{babystep}}" ui-serf-active="selected">
+      <li ng-class="{active: item.selected}" class="babystepitem">Baby Step {{babystep}}
+        <img class="icon" ng-src="assets/images/icons/individual/icons_small_bs{{babystep}}.png" alt="Money" />
+      </li>
+    </a>
+    <hr>
+  </div>
+</ul>

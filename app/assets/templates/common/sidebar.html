@@ -5,12 +5,15 @@
     <a
       ng-href="#{{babystep.id}}"
       ui-serf="app.step({ stepId: babystep })">
+
+    <div ng-class="{{$root.stateTransition}}">
+
     <li
       ng-class="{'active': babystep.selected}"
       ng-animate="'view'"
       ng-click="selectStep(babystep.id)"
       class="babystepitem">Baby Step {{babystep.id}}
-  <img
+    <img
       ng-if="babystep.selected"
       class="icon"
       ng-src="assets/images/icons/individual/icons_small_bs{{babystep.id}}_blue.png"
@@ -21,6 +24,7 @@
           ng-src="assets/images/icons/individual/icons_small_bs{{babystep.id}}.png"
         />
       </li>
+    </div>
     </a>
     <hr>
   </div>

@@ -65,22 +65,7 @@ header h3{
   font-family: 'Source Sans Pro', sans-serif;
   line-height:60px;
   color:#36abe1;
-  background-color: #fff;
   font-style:semi-bold;
-}
-
-.navTransition{
-  background-color:#fff;
-  animation: moveFromBottom 900ms linear;
-}
-
-@keyframes moveFromBottom {
-    from {
-        transform: translateY(0%);
-    }
-    to {
-        transform: translateY(30%);
-    }
 }
 
 
@@ -202,46 +187,59 @@ a:active{
   padding-top:6px;
 }
 
-.well[ui-view]{
- height: 65px;
+.down {
+  background-color: #fff;
 }
 
-.view-enter, .view-leave {
+.up {
+  background-color: #fff;
+}
+
+[ui-view]{
+/*   width: 92px;
+height: 80%;
+background-color: #eee;
+padding: 3px;
+margin: 3px; */
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave{
   position: absolute;
-  -webkit-transition:all .5s ease-in-out;
-	-moz-transition:all .5s ease-in-out;
-	-o-transition:all .5s ease-in-out;
-	transition:all .5s ease-in-out;
+  left: 3px;
+  transition: all 1s ease-in-out;
 }
 
-.view-enter {
-  opacity: 0;
-  -webkit-transform:scale3d(0.5, 0.5, 0.5);
-  -moz-transform:scale3d(0.5, 0.5, 0.5);
-  transform:scale3d(0.5, 0.5, 0.5);
+[ui-view].left.ng-enter{
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
 }
-
-.view-enter-active {
-  opacity: 1;
-  -webkit-transform:scale3d(1, 1, 1);
-  -moz-transform:scale3d(1, 1, 1);
-  transform:scale3d(1, 1, 1);
+[ui-view].left.ng-enter-active{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
 }
-
-.view-leave {
-  opacity: 1;
-  /*padding-left: 0px;*/
-  -webkit-transform:translate3d(0, 0, 0);
-  -moz-transform:translate3d(0, 0, 0);
-  transform:translate3d(0, 0, 0);
+[ui-view].left.ng-leave{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
 }
-
-.view-leave-active {
-  opacity: 0;
-  /*padding-left: 100px;*/
-  -webkit-transform:translate3d(100px, 0, 0);
-  -moz-transform:translate3d(100px, 0, 0);
-  transform:translate3d(100px, 0, 0);
+[ui-view].left.ng-leave-active{
+   transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+}
+[ui-view].right.ng-enter{
+  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+}
+[ui-view].right.ng-enter-active{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+}
+[ui-view].right.ng-leave{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+}
+[ui-view].right.ng-leave-active{
+   transform: translateY(100%);
+  -webkit-transform: translateY(100%);
 }
 
 @media all and (max-width: 1380px) and (min-width: 1100px) {

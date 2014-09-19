@@ -6,14 +6,23 @@ var app = angular.module('babysteps',[
 ])
 
 app.run([ '$rootScope', '$state', '$stateParams', function ($rootScope,$state,$stateParams) {
+
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     $rootScope.$on('$stateChangeError',function (event,toState,toParams,fromState,fromParams,error) {
       console.log("Huston we have a " + console.error(error));
-    })
-    }
-  ]
-)
+    });
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      if (toParams.stepId > fromParams.stepId) {
+          $rootScope.stateTransition = 'down';
+      }else if (toParams.stepId < fromParams.stepId){
+        $rootScope.stateTransition = 'up';
+      }else{
+        angular.noop();
+      }
+    });
+  }]);
 
 app.config(["$stateProvider",'$urlRouterProvider', function ($stateProvider) {
 
@@ -97,7 +106,39 @@ app.factory('friends',function(){
 
   return friends;
 
-})
+});
+
+app.directive("transition", function($animate, $compile) {
+  function link(scope, element, attr) {
+    var isSelected = false;
+    var parent = element.parent();
+    var box;
+
+    element.on('click', function() {
+      isSelected = !isAppended;
+      if (isSelected) {
+        box = angular.element('<div class="rect"></div>');
+
+        scope.$apply(function () {
+        $animate.enter(box, parent, element, function() {
+          console.log("Done entering");
+        });
+      });
+
+      } else {
+        scope.$apply(function () {
+          $animate.leave(box, parent, element, function() {
+            console.log("Done entering");
+          });
+        });
+    
+      }
+    });
+  }
+  return {
+    link: link
+  };
+});
 
 function MainCtrl($scope,friends){
   $scope.friends = friends;
